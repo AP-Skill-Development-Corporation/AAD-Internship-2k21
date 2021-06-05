@@ -19,4 +19,8 @@
 
 [Day-9 (02-06-2021)](https://youtu.be/P4CEfIELYbs)
 
-[Day-10(03-06-2021)](https://youtu.be/U5BMtMJpBZc)
+[Day-10 (03-06-2021)](https://youtu.be/U5BMtMJpBZc)
+
+[Day-11 (04-06-2021)]()
+
+[Day-12 (05-06-2021)](https://youtu.be/D2fhJddqN9A)
