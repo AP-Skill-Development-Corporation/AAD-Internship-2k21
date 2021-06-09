@@ -62,6 +62,38 @@ Microphone and Speakers facility for Offline training program.
             b. LiveData
             c. SharedPreferences
             d. Room Persistence Library.
+       25. Introduction to Firebase
+            a. Firebase Features
+            b. Add Firebase to your Android application
+       26. Authentication
+            a. Email & Password Authentication
+            b. Federated identity provider integration(Google Sign In)
+            c. Phone Number Authentication
+       27. Firebase Realtime Database
+            a. Insert Data
+            b. Read Data
+            c. Update Data
+            d. Delete Data
+       28. Cloud Storage
+            a. Cloud Storage perform uploads and downloads
+       29. Sensors
+            a. Shake Detector
+            b. Light Detector
+            c. Gyroscope
+            d. Flip Detector
+            e. Touch Detector
+       30. Locations
+            a. Get Current Location Details
+       31. Maps
+            a. Get Current Location 
+            b. Changing Markers
+            c. Adding Zoom Controls
+       32. Analytics using Graphs
+            a. Bar Graph
+            b. Pie Graph
+       33. Payment Gateways
+       34. AdMob
+
 
 
 
