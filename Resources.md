@@ -21,6 +21,10 @@
 
 [Day-10 (03-06-2021)](https://youtu.be/U5BMtMJpBZc)
 
-[Day-11 (04-06-2021)]()
-
 [Day-12 (05-06-2021)](https://youtu.be/D2fhJddqN9A)
+
+[Day-15 (09-06-2021)](https://youtu.be/04Z5-S0M-1E)
+
+[Day-16 (10-06-2021)](https://youtu.be/vffJwUxFpQo)
+
+
