@@ -38,9 +38,5 @@ public class RTable {
         this.snumber = snumber;
     }
 
-    public RTable(@NonNull String sroll, String sname, String snumber) {
-        this.sroll = sroll;
-        this.sname = sname;
-        this.snumber = snumber;
-    }
+
 }

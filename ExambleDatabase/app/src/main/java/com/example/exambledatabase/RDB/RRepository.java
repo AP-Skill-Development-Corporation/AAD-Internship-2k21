@@ -17,32 +17,32 @@ public class RRepository {
         list = rDatabase.rDao().readAll();
     }
 
-    class InsertTask extends AsyncTask<RTable,Void,Void>{
+    public class InsertTask extends AsyncTask<RTable,Void,Void>{
 
         @Override
         protected Void doInBackground(RTable... rTables) {
             for (int i=0;i<rTables.length;i++){
-                rDatabase.rDao().insert(rTables[i]);
+                rDatabase.rDao().insert(rTables[0]);
             }
             return null;
         }
     }
-    class UpdateTask extends AsyncTask<RTable,Void,Void>{
+   public class UpdateTask extends AsyncTask<RTable,Void,Void>{
 
         @Override
         protected Void doInBackground(RTable... rTables) {
             for (int i=0;i< rTables.length;i++){
-                rDatabase.rDao().update(rTables[i]);
+                rDatabase.rDao().update(rTables[0]);
             }
             return null;
         }
     }
-    class DeleteTask extends AsyncTask<RTable,Void,Void>{
+   public class DeleteTask extends AsyncTask<RTable,Void,Void>{
 
         @Override
         protected Void doInBackground(RTable... rTables) {
             for (int i=0;i<rTables.length;i++){
-                rDatabase.rDao().delete(rTables[i]);
+                rDatabase.rDao().delete(rTables[0]);
             }
             return null;
         }
