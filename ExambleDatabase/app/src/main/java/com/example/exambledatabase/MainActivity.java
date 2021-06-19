@@ -1,7 +1,9 @@
 package com.example.exambledatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 import com.example.exambledatabase.RDB.RTable;
 import com.example.exambledatabase.RDB.RViewModel;
 import androidx.lifecycle.ViewModelProviders;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText roll,name,num;
@@ -26,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
         num = findViewById(R.id.phone);
         rv = findViewById(R.id.rv);
         rViewModel = new ViewModelProvider(this).get(RViewModel.class);
+        rViewModel.readData().observe(this, new Observer<List<RTable>>() {
+            @Override
+            public void onChanged(List<RTable> rTables) {
+                MyAdapter adapter = new MyAdapter(MainActivity.this,rTables);
+                rv.setAdapter(adapter);
+                rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+            }
+        });
     }
 
     public void save(View view) {
