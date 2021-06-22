@@ -1,10 +1,14 @@
 package com.example.firebaseexample;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -49,5 +53,48 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    public void register(View view) {
+        startActivity(new Intent(this,RegisterActivity.class));
+
+    }
+
+    public void reset(View view) {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        View v = LayoutInflater.from(this).inflate(R.layout.reset,null,false);
+        EditText email = v.findViewById(R.id.editEmailAddress);
+        b.setView(v);
+        b.setCancelable(false);
+        b.setPositiveButton("Reset", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String e = email.getText().toString();
+                if (e.isEmpty()){
+                    email.setError("Can't be Empty");
+                }else{
+                    auth.sendPasswordResetEmail(e).addOnCompleteListener(MainActivity.this,
+                            new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(MainActivity.this,
+                                                "Reset Link Sent", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(MainActivity.this, "Invalid Mail",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+            }
+        });
+        b.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        b.show();
     }
 }
