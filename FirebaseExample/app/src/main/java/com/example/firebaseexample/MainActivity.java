@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,12 +31,24 @@ public class MainActivity extends AppCompatActivity {
         mail = findViewById(R.id.email);
         pass = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
+        if (!isConnected()){
+            Toast.makeText(this, "Turn on internet First"
+                    , Toast.LENGTH_SHORT).show();
+        }
+        if (auth.getCurrentUser()!=null){
+            startActivity(new Intent(this,HomeActivity.class));
+            finish();
+        }
     }
 
     public void login(View view) {
         String email = mail.getText().toString().trim();
         String password = pass.getText().toString();
-        if (email.isEmpty()|password.isEmpty()){
+        if (!isConnected()){
+            Snackbar.make(this,view,"Turn on Internet",
+                    Snackbar.LENGTH_LONG).show();
+        }
+        else if (email.isEmpty()|password.isEmpty()){
             Toast.makeText(this, "Fill all the details",
                     Toast.LENGTH_SHORT).show();
         }
@@ -45,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                             if (task.isSuccessful()){
                                 startActivity(new Intent(MainActivity.this
                                         ,HomeActivity.class));
+                                finish();
                             }
                             else{
                                 Toast.makeText(MainActivity.this, "Authentication Failed",
@@ -96,5 +112,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         b.show();
+    }
+    public boolean isConnected(){
+        boolean connected = false;
+        try {
+            ConnectivityManager manager = (ConnectivityManager)
+                    getSystemService(CONNECTIVITY_SERVICE);
+            NetworkInfo info = manager.getActiveNetworkInfo();
+            connected = (info != null) && (info.isAvailable()) && (info.isConnected());
+            return connected;
+        }
+        catch (Exception e){
+        }
+        return connected;
     }
 }

@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         MainActivity.class));
                                 Toast.makeText(RegisterActivity.this, "Registered"
                                         , Toast.LENGTH_SHORT).show();
+                                finish();
                             }else{
                                 Toast.makeText(RegisterActivity.this, "Registration Failed",
                                         Toast.LENGTH_SHORT).show();
