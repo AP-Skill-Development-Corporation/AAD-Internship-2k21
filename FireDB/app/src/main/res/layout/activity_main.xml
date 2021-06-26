@@ -25,7 +25,8 @@
         android:layout_gravity="center"
         android:src="@drawable/ic_launcher_background"
         android:layout_marginTop="15dp"
-        android:id="@+id/iv"/>
+        android:id="@+id/iv"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
