@@ -1,0 +1,2 @@
+rootProject.name = "GraphsExample"
+include ':app'
